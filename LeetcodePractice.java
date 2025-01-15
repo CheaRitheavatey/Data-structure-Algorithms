@@ -1,6 +1,25 @@
 import java.util.Arrays;
 
 public class LeetcodePractice {
+    public static String reverseWords(String s) {
+        // split string s into array
+        StringBuilder result = new StringBuilder();
+        String[] list = s.split(" ");
+        for (int i = list.length - 1; i >= 0; i--) {
+            if (!list[i].isEmpty()) {
+                list[i] = list[i].trim();
+                result.append(list[i]).append(" ");
+            }
+        }
+        // remove the last space
+        if (result.length() > 0 && result.charAt(result.length() - 1) == ' ') {
+            result.deleteCharAt(result.length() - 1);
+        }
+        return result.toString();
+
+        // time complexity O(n)
+
+    }
     
         public static int hIndex(int[] citations) {
             // sort array
@@ -40,7 +59,10 @@ public class LeetcodePractice {
         String[] strs = {"flower","flow","flight"};
         // System.out.println(longestCommonPrefix(strs));
         int[] citations = {1,3,1};
-        System.out.println(hIndex(citations));
+        // System.out.println(hIndex(citations));
+
+        String s = "  hello world  ";
+        System.out.println(reverseWords(s));
 
     }
 }

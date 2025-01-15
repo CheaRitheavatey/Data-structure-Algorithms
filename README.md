@@ -149,44 +149,72 @@
         System.out.println("String ends with 'o'");
     } 
 
-3. two-pointer algorithm: time complexity: O(n)
+    3. two-pointer algorithm: time complexity: O(n)
 
-    int[] arr = {1, 2, 3, 4, 5};
-    int target = 6;
-    int left = 0, right = arr.length - 1;
+        int[] arr = {1, 2, 3, 4, 5};
+        int target = 6;
+        int left = 0, right = arr.length - 1;
 
-    while (left < right) {
-        int sum = arr[left] + arr[right];
-        if (sum == target) {
-            System.out.println("Pair: " + arr[left] + ", " + arr[right]);
-            left++;
-            right--;
-        } else if (sum < target) {
-            left++;
-        } else {
-            right--;
-        }
-    }
-
-4. sliding window algorithm: time complexity: O(n)
-    public static int findMaxSum(int[] arr, int k) {
-        if (arr.length < k) {
-            System.out.println("Array length is less than the window size.");
-            return -1;
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+            if (sum == target) {
+                System.out.println("Pair: " + arr[left] + ", " + arr[right]);
+                left++;
+                right--;
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
         }
 
-        // Calculate the sum of the first window
-        int maxSum = 0;
-        for (int i = 0; i < k; i++) {
-            maxSum += arr[i];
+    4. sliding window algorithm: time complexity: O(n)
+        public static int findMaxSum(int[] arr, int k) {
+            if (arr.length < k) {
+                System.out.println("Array length is less than the window size.");
+                return -1;
+            }
+
+            // Calculate the sum of the first window
+            int maxSum = 0;
+            for (int i = 0; i < k; i++) {
+                maxSum += arr[i];
+            }
+
+            int windowSum = maxSum;
+            // Slide the window over the array
+            for (int i = k; i < arr.length; i++) {
+                windowSum += arr[i] - arr[i - k];
+                maxSum = Math.max(maxSum, windowSum);
+            }
+
+            return maxSum;
         }
 
-        int windowSum = maxSum;
-        // Slide the window over the array
-        for (int i = k; i < arr.length; i++) {
-            windowSum += arr[i] - arr[i - k];
-            maxSum = Math.max(maxSum, windowSum);
+2. linked list:
+ - singly linked list:
+    class Node {
+        int data;
+        Node next;
+    } 
+
+    class LinkedList {
+        Node head;
+
+        public void add(int data) {
+            Node newNode = new Node();
+            newNode.data = data;
+            newNode.next = head;
+            head = newNode;
         }
 
-        return maxSum;
-    }
+        public void print() {
+            Node current = head;
+            while (current != null) {   
+                System.out.print(current.data + " -> ");
+                current = current.next;
+            }
+            System.out.println("null");
+        }
+    }   
+ }
