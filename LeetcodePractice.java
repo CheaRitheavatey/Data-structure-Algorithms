@@ -1,6 +1,33 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LeetcodePractice {
+    public static int[] twoSum(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
+        int[] result = new int[2];
+
+        while (left < right) {
+            if (numbers[left] + numbers[right] == target) {
+                result[0] = left+1;
+                result[1] = right+1;
+
+                left++;
+                right++;
+                break;
+
+            } else if (numbers[left] + numbers[right] > target) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+
+        return result;
+        // time complexity O(n) because while loop take O(n) time, space complexity O(1) because of fixed array
+        
+   }
+
     public static String reverseWords(String s) {
         // split string s into array
         StringBuilder result = new StringBuilder();
@@ -62,7 +89,10 @@ public class LeetcodePractice {
         // System.out.println(hIndex(citations));
 
         String s = "  hello world  ";
-        System.out.println(reverseWords(s));
+        // System.out.println(reverseWords(s));
+
+        int[] numbers = {2,7,11,15};
+        System.out.println(twoSum(numbers, 9));
 
     }
 }
