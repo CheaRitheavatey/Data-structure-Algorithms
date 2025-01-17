@@ -1,7 +1,68 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class LeetcodePractice {
+    public static void minSubArrayLen(int target, int[] nums) {
+        ArrayList<Integer> array = new ArrayList<>();
+        for (int i = 2; i<nums.length; i++) {
+            int maxSum = 0;
+            for (int j = 0; j < i; j++) {
+                maxSum += nums[i];
+
+                if (maxSum >= target) {
+                    array.add(nums[i]);
+                }
+            }
+
+            int windowSum = maxSum;
+            // Slide the window over the array
+            for (int k = i; k < nums.length; k++) {
+                windowSum += nums[k] - nums[k - i];
+                if (windowSum >= target) {
+                    array.add(nums[k]);
+                }
+                
+            }
+            
+        }
+        System.out.println(array);
+        HashSet<Integer> set = new HashSet<>(array);
+        System.out.println(set);
+        System.out.println(set.size());
+        
+    }
+    public static List<List<Integer>> threeSum(int[] nums) {
+        int y = 1;
+        int z = nums.length - 1;
+
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        
+        for (int i = 0; i < nums.length-1; i++) {
+            int x = nums[i];
+            while (y < z) {
+                int sum = x+ nums[y] + nums[z];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[y], nums[z]));
+                    y++;
+                    z++;
+                    break; 
+                }
+                else if (sum > 0) {
+                    z--;
+                } else {
+                    y++;
+                }
+                    
+            }
+            
+        }
+        return result;
+
+       
+    }
     public static int[] twoSum(int[] numbers, int target) {
         int left = 0;
         int right = numbers.length - 1;
@@ -92,7 +153,10 @@ public class LeetcodePractice {
         // System.out.println(reverseWords(s));
 
         int[] numbers = {2,7,11,15};
-        System.out.println(twoSum(numbers, 9));
+        // System.out.println(twoSum(numbers, 9));
 
+        int[] nums = {1,2,3,4,5};
+        // System.out.println(threeSum(nums));
+        minSubArrayLen(11, nums);
     }
 }
