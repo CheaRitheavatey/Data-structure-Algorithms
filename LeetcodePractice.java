@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LeetcodePractice {
     public static void minSubArrayLen(int target, int[] nums) {
@@ -34,16 +35,18 @@ public class LeetcodePractice {
         
     }
     public static List<List<Integer>> threeSum(int[] nums) {
-        int y = 1;
-        int z = nums.length - 1;
+        
 
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         
-        for (int i = 0; i < nums.length-1; i++) {
+        for (int i = 1; i < nums.length-1; i++) {
+            
+            int y = i + 1;
+            int z = nums.length - 1;
             int x = nums[i];
             while (y < z) {
-                int sum = x+ nums[y] + nums[z];
+                int sum = x + nums[y] + nums[z];
                 if (sum == 0) {
                     result.add(Arrays.asList(nums[i], nums[y], nums[z]));
                     y++;
@@ -54,11 +57,17 @@ public class LeetcodePractice {
                     z--;
                 } else {
                     y++;
-                }
-                    
+                }        
             }
+
             
         }
+        // check for when duplicate in element
+        
+        // check for when duplicate
+        Set<List<Integer>> uniqueResults = new HashSet<>(result);
+        result = new ArrayList<>(uniqueResults);
+
         return result;
 
        
@@ -155,8 +164,9 @@ public class LeetcodePractice {
         int[] numbers = {2,7,11,15};
         // System.out.println(twoSum(numbers, 9));
 
-        int[] nums = {1,2,3,4,5};
-        // System.out.println(threeSum(nums));
-        minSubArrayLen(11, nums);
+        int[] nums = {-1,0,1,2,-1,-4};
+        System.out.println(threeSum(nums));
+        
+        // minSubArrayLen(11, nums);
     }
 }
