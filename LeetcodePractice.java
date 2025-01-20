@@ -3,8 +3,33 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+// Definition for singly-linked list.
+ class ListNode {
+      int val;
+      ListNode next;
+      ListNode(int x) {
+          val = x;
+          next = null;
+      }
+  }
+ 
 public class LeetcodePractice {
+    public boolean hasCycle(ListNode head) {
+        // this method is called Floyd's Tortoise and Hare where the fast and slow node will eventually meet at a certain point
+        // time complexity O(n)
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) return true;
+        }
+
+        return false;
+        
+    }
     public static void minSubArrayLen(int target, int[] nums) {
         ArrayList<Integer> array = new ArrayList<>();
         for (int i = 2; i<nums.length; i++) {
@@ -41,7 +66,6 @@ public class LeetcodePractice {
         List<List<Integer>> result = new ArrayList<>();
         
         for (int i = 1; i < nums.length-1; i++) {
-            
             int y = i + 1;
             int z = nums.length - 1;
             int x = nums[i];

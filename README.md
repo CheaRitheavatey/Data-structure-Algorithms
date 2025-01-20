@@ -217,4 +217,16 @@
             System.out.println("null");
         }
     }   
- }
+
+3. stacks and queues:
+    - stack:
+        class Stack {
+            private List<Integer> stack = new ArrayList<>();
+
+            public void push(int data) {
+                stack.add(data);
+            }
+
+            public int pop() {
+                return stack.remove(stack.size() - 1);
+            }
