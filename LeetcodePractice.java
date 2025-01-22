@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 // Definition for singly-linked list.
  class ListNode {
       int val;
@@ -14,6 +15,34 @@ import java.util.Set;
   }
  
 public class LeetcodePractice {
+    public static boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        
+        for (int i=0; i < s.length(); i++) {
+            if (s.charAt(i) == '[' || s.charAt(i) == '(' || s.charAt(i) == '{') {
+                stack.push(s.charAt(i));
+            } else if (s.charAt(i) == ']' || s.charAt(i) == ')' || s.charAt(i) == '}') {
+                
+                if (stack.isEmpty()) {
+                    return false;
+                }
+            
+
+            char top  = stack.peek();
+            if (s.charAt(i) == ']' && top == '[' || s.charAt(i) == ')' && top == '(' || s.charAt(i) == '}' && top == '{') {
+                stack.pop();
+            } else {
+                return false;
+            }
+        }
+    }
+           
+        return stack.isEmpty();
+
+        // time complexity: O(n) where n is the length of the input string s
+
+        
+    }
     public boolean hasCycle(ListNode head) {
         // this method is called Floyd's Tortoise and Hare where the fast and slow node will eventually meet at a certain point
         // time complexity O(n)
@@ -189,8 +218,11 @@ public class LeetcodePractice {
         // System.out.println(twoSum(numbers, 9));
 
         int[] nums = {-1,0,1,2,-1,-4};
-        System.out.println(threeSum(nums));
+        // System.out.println(threeSum(nums));
         
         // minSubArrayLen(11, nums);
+
+        String a = "(])";
+        System.out.println(isValid(a));
     }
 }
