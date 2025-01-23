@@ -15,6 +15,42 @@ import java.util.Stack;
   }
  
 public class LeetcodePractice {
+    public static String simplifyPath(String s) {
+        String[] list = s.split("/");
+        System.out.println(Arrays.toString(list));
+        Stack<String> stack = new Stack<>();
+
+       
+        StringBuilder result = new StringBuilder();
+        
+
+        for (String sub: list) {
+            if (sub.equals("..")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+
+            }
+
+            else if (sub.equals("") || sub.equals(".")) {
+                continue;
+            } else {
+                stack.push(sub);
+            }
+           
+        }
+
+        while (!stack.isEmpty()) {
+            result.insert(0, "/" + stack.pop());
+        }
+
+        if (result.length() == 0) {
+            return "/"; }
+        
+        return result.toString();
+
+        // time complexity O(n)
+    }
     public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         
@@ -223,6 +259,8 @@ public class LeetcodePractice {
         // minSubArrayLen(11, nums);
 
         String a = "(])";
-        System.out.println(isValid(a));
+        // System.out.println(isValid(a));
+        String simplify = "/home/user/Documents/../Pictures";
+        System.out.println(simplifyPath(simplify));
     }
 }
