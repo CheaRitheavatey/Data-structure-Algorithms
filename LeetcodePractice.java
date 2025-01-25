@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
@@ -15,6 +16,27 @@ import java.util.Stack;
   }
  
 public class LeetcodePractice {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode x = new ListNode(0);
+        ListNode current = x;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            int val1 = (l1 != null) ? l1.val : 0;
+            int val2 = (l2 != null) ? l2.val : 0;
+            int total = val1 + val2 + carry;
+            carry = total/10;
+
+            current.next = new ListNode(total % 10);
+
+            current = current.next;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+            
+        }
+        return x.next;
+        
+        }
+    
     public static String simplifyPath(String s) {
         String[] list = s.split("/");
         System.out.println(Arrays.toString(list));
@@ -261,6 +283,8 @@ public class LeetcodePractice {
         String a = "(])";
         // System.out.println(isValid(a));
         String simplify = "/home/user/Documents/../Pictures";
-        System.out.println(simplifyPath(simplify));
+        // System.out.println(simplifyPath(simplify));
+
+
     }
 }
