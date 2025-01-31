@@ -16,6 +16,41 @@ import java.util.Stack;
   }
  
 public class LeetcodePractice {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        // create a pointer for list1 and list2 and pointer for new list
+        ListNode x = list1;
+        ListNode y = list2;
+
+        ListNode z = new ListNode(0);
+        ListNode current = z;
+
+
+        // traverse list1 and list2 and compare
+        while (x != null && y != null) {
+            if (x.val < y.val) {
+                current.next = x;
+                x = x.next;
+            } else {
+                current.next = y;
+                y = y.next;
+            }
+            // move current to the next node
+            current = current.next;
+        }
+
+        // if theres any leftover just add them 
+        if (x != null) {
+            current.next = x;
+        }
+
+        if (y != null) {
+            current.next = y;
+        }
+        return z.next;
+
+        // time complexity is O(n+m) or O(n) because we have to traverse both linkedlist
+
+    }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode x = new ListNode(0);
         ListNode current = x;
