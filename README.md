@@ -230,3 +230,7 @@
             public int pop() {
                 return stack.remove(stack.size() - 1);
             }
+        }
+
+4. trees:
+    - binary tree:
