@@ -16,6 +16,43 @@ import java.util.Stack;
   }
  
 public class LeetcodePractice {
+    public static ListNode reverseBetween(ListNode head, int left, int right) {
+        // new link list
+        ListNode result = new ListNode(0);
+        ListNode current = result;
+
+        ListNode x = head;
+        ListNode behindy = x;
+        
+
+        while (x.val != left) {
+            current.next = x;
+            current = current.next;
+            x = x.next;
+        }
+
+        
+        while (behindy.val != right) {
+            behindy = behindy.next;
+
+        }
+
+
+        ListNode y = x;
+        
+
+        for (int i = left; i <= right; i++) {
+            if (x.val < x.next.val) {
+                x= x.next;
+                x.next = y;
+            }
+        }
+        y= behindy.next;
+
+
+        
+        
+    }
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         // create a pointer for list1 and list2 and pointer for new list
         ListNode x = list1;
