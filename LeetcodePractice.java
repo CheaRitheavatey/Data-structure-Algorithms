@@ -16,6 +16,27 @@ import java.util.Stack;
   }
  
 public class LeetcodePractice {
+    public static int lengthOfLongestSubstring(String s) {
+        String result = "";
+        // result += s.charAt(0);
+
+        // hash
+        Set<Character> chars = new HashSet<Character>();
+
+        
+        // take in one char first in the string
+        for (int i = 0; i<s.length();i++) {
+            char current = s.charAt(i);
+            if (!chars.contains(current)) {
+                result += s.charAt(i);
+                chars.add(current);
+            }
+            
+        }
+        System.out.println(result);
+        return result.length();
+        
+    }
     public static ListNode reverseBetween(ListNode head, int left, int right) {
         // new link list
         ListNode result = new ListNode(0);
@@ -31,23 +52,14 @@ public class LeetcodePractice {
             x = x.next;
         }
 
-        
+        ListNode y = x;
         while (behindy.val != right) {
             behindy = behindy.next;
+            y= y.next;
 
         }
-
-
-        ListNode y = x;
-        
-
-        for (int i = left; i <= right; i++) {
-            if (x.val < x.next.val) {
-                x= x.next;
-                x.next = y;
-            }
-        }
-        y= behindy.next;
+        // current.next = behindy;
+        return result.next;
 
 
         
@@ -357,6 +369,8 @@ public class LeetcodePractice {
         String simplify = "/home/user/Documents/../Pictures";
         // System.out.println(simplifyPath(simplify));
 
+        String x = "bbbbb";
+        System.out.println(lengthOfLongestSubstring(x));
 
     }
 }
