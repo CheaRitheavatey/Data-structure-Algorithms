@@ -73,10 +73,7 @@ public class BinaryTree {
 
         return searchRec(root.right, value);
     }
-}
 
-// Main class to test the binary tree implementation
-class BinaryTreeDemo {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         
@@ -98,3 +95,8 @@ class BinaryTreeDemo {
         System.out.println("Search for 90: " + tree.search(90));
     }
 }
+
+// // Main class to test the binary tree implementation
+// class BinaryTreeDemo {
+    
+// }

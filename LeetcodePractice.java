@@ -17,24 +17,49 @@ import java.util.Stack;
  
 public class LeetcodePractice {
     public static int lengthOfLongestSubstring(String s) {
-        String result = "";
-        // result += s.charAt(0);
+        Set<Character> chars = new HashSet<>();
+        int left = 0;
+        int maxlength = 0;
 
-        // hash
-        Set<Character> chars = new HashSet<Character>();
+        for (int right = 0; right < s.length(); right++) {
+            char current = s.charAt(right);
+            System.out.println("current: "+s.charAt(right));
+            
+            while (chars.contains(current)) {
+                System.out.println("before remove: "+ chars);
+                chars.remove(s.charAt(left));
+                System.out.println("after remove: "+chars);
+                left++;
+            }
+            chars.add(current);
+            System.out.println("chars.add(current): "+chars);
+            maxlength = Math.max(maxlength, right - left +1);
+            System.out.println("max length: " + maxlength);
+        }
+        System.out.println(chars);
+
+        return maxlength;
+        
+
+
+        // String result = "";
+        // // result += s.charAt(0);
+
+        // // hash
+        // Set<Character> chars = new HashSet<Character>();
 
         
-        // take in one char first in the string
-        for (int i = 0; i<s.length();i++) {
-            char current = s.charAt(i);
-            if (!chars.contains(current)) {
-                result += s.charAt(i);
-                chars.add(current);
-            }
+        // // take in one char first in the string
+        // for (int i = 0; i<s.length();i++) {
+        //     char current = s.charAt(i);
+        //     if (!chars.contains(current)) {
+        //         result += s.charAt(i);
+        //         chars.add(current);
+        //     }
             
-        }
-        System.out.println(result);
-        return result.length();
+        // }
+        // System.out.println(result);
+        // return result.length();
         
     }
     public static ListNode reverseBetween(ListNode head, int left, int right) {
@@ -369,7 +394,7 @@ public class LeetcodePractice {
         String simplify = "/home/user/Documents/../Pictures";
         // System.out.println(simplifyPath(simplify));
 
-        String x = "bbbbb";
+        String x = "pwwkew";
         System.out.println(lengthOfLongestSubstring(x));
 
     }
