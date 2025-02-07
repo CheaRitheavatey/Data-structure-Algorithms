@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
+
+
 // Definition for singly-linked list.
  class ListNode {
       int val;
@@ -14,8 +16,26 @@ import java.util.Stack;
           next = null;
       }
   }
+  class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    
+    TreeNode(int x) {
+        val = x;
+    }
+}
+
  
 public class LeetcodePractice {
+    public static int maxDepth(TreeNode root) {
+        int left = maxDepth(root.left);
+        System.out.println(left);
+        int right = maxDepth(root.right);
+        System.out.println(right);
+        return Math.max(left, right)+1;
+        
+    }
     public static int lengthOfLongestSubstring(String s) {
         Set<Character> chars = new HashSet<>();
         int left = 0;
@@ -395,7 +415,10 @@ public class LeetcodePractice {
         // System.out.println(simplifyPath(simplify));
 
         String x = "pwwkew";
-        System.out.println(lengthOfLongestSubstring(x));
+        // System.out.println(lengthOfLongestSubstring(x));
+        // int[] test = {3,9,20,null,null,15,7};
+        // System.out.println(maxDepth(test));
+        
 
     }
 }
