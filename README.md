@@ -234,3 +234,9 @@
 
 4. trees:
     - binary tree:
+
+    - binary heap: there are 2 max heap and min heap
+
+    max heap is when parent node is greater than or equal to its children
+
+    min heap is when parent node is less than or equal to its childrenf
