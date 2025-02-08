@@ -28,6 +28,20 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+
+        if (p == null || q == null || p.val != q.val) {
+            return false;
+        }
+
+        boolean left = isSameTree(p.left, q.left);
+        boolean right = isSameTree(p.right, q.right);
+
+        return left && right;
+    }
     public static int maxDepth(TreeNode root) {
         int left = maxDepth(root.left);
         System.out.println(left);
