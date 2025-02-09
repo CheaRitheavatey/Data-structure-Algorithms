@@ -28,6 +28,36 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        int length = 1;
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+            length++;
+        }
+
+        current.next = head;
+
+        k = k % length;
+        int tail = length - k;
+        
+        
+        ListNode end = head;
+        ListNode newhead = head;
+        for (int i = 1; i < tail; i++) {
+            end = end.next;
+        }
+        newhead = end.next;
+        end.next = null;
+
+        
+        return newhead;
+
+        // time complexity O(n)
+    }
     public static boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
             return true;
