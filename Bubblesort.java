@@ -40,6 +40,10 @@ public class Bubblesort {
         System.out.println("Sorted array:");
         printArray(arr);
         
+
+        // worst case O(n^2) = n^2/4 comparisons and swaps
+        // best case O(n) = if the array is alrady sorted
+        
     }
     
 }
