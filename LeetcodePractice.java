@@ -28,7 +28,14 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
-    public boolean isSymmetric(TreeNode root) {
+    public static int countNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return countNodes(root.left) + countNodes(root.right) +1;
+        
+    }
+    public static boolean isSymmetric(TreeNode root) {
         if (root == null) 
             return true;
         
