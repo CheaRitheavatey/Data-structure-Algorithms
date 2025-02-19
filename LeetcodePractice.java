@@ -28,6 +28,29 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        int count = 0;
+        // traverse to the end
+        ListNode end = head;
+        ListNode current = head;
+
+        
+        while (end != null) {
+            count += 1;
+            end = end.next;
+        }
+        if (n == count)
+            return head.next;
+
+        for (int i=1; i < count - n; i++) {
+            current = current.next;
+        }
+
+        current.next = current.next.next;
+
+        return head;
+        
+    }
     public static int countNodes(TreeNode root) {
         if (root == null) {
             return 0;
