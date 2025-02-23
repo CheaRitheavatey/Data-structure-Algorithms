@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Dictionary;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -28,6 +30,25 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static int romanToInt(String s) {
+        int result = 0;
+
+        Dictionary<Character, Integer> dict = new Hashtable<>();
+        dict.put('I', 1);
+        dict.put('V', 5);
+        dict.put('X', 10);
+        dict.put('L', 50);
+        dict.put('C', 100);
+        dict.put('D', 500);
+        dict.put('M', 1000);
+
+        for (int i =0; i < s.length(); i++) {
+            int x = dict.get(s.charAt(i));
+            result += x;
+        }
+
+        return result;
+    }
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         int count = 0;
         // traverse to the end
@@ -66,7 +87,7 @@ public class LeetcodePractice {
         
     }
 
-    private boolean check(TreeNode tree1, TreeNode tree2) {
+    public static boolean check(TreeNode tree1, TreeNode tree2) {
         if (tree1 == null && tree2 == null)
             return true;
         
@@ -530,6 +551,6 @@ public class LeetcodePractice {
         // int[] test = {3,9,20,null,null,15,7};
         // System.out.println(maxDepth(test));
         
-
+        romanToInt("LVIII");
     }
 }
