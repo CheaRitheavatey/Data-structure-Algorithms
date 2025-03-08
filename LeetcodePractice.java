@@ -31,6 +31,45 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static boolean isIsomorphic(String s, String t) {
+        // store string in hashmap
+        // check length
+        if (s.length() != t.length())
+            return false;
+        
+        HashMap<Character, Character> s2t = new HashMap<>();
+        HashMap<Character, Character> t2s = new HashMap<>();
+
+        // for char i in s if s contain key t put it in else retur false
+        for (int i =0; i < s.length(); i++) {
+            char chs = s.charAt(i);
+            char cht = t.charAt(i);
+
+            if (s2t.containsKey(chs)) {
+                if (s2t.get(chs) != cht) {
+                    return false;
+                }
+            }
+            else {
+                s2t.put(chs, cht);
+            }
+            
+            if (t2s.containsKey(cht)) {
+                if (t2s.get(cht) != chs) {
+                    return false;
+                }
+            }
+            else {
+                s2t.put(cht, chs);
+            }
+            
+
+            
+        }
+        System.out.println(s2t);
+        System.out.println(t2s);
+        return true;
+        }
     public boolean canConstruct(String ransomNote, String magazine) {
         
         HashMap<Character, Integer> map = new HashMap<>();
@@ -570,6 +609,7 @@ public class LeetcodePractice {
         // int[] test = {3,9,20,null,null,15,7};
         // System.out.println(maxDepth(test));
         
-        romanToInt("LVIII");
+        // romanToInt("LVIII");
+        System.out.println(isIsomorphic("egg", "add"));
     }
 }
