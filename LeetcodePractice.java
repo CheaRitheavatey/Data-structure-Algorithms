@@ -4,7 +4,6 @@ import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
@@ -60,7 +59,7 @@ public class LeetcodePractice {
                 }
             }
             else {
-                s2t.put(cht, chs);
+                t2s.put(cht, chs);
             }
             
 
@@ -610,6 +609,6 @@ public class LeetcodePractice {
         // System.out.println(maxDepth(test));
         
         // romanToInt("LVIII");
-        System.out.println(isIsomorphic("egg", "add"));
+        System.out.println(isIsomorphic("badc", "baba"));
     }
 }
