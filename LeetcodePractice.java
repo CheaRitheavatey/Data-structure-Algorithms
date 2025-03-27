@@ -30,6 +30,18 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static void rotate(int[] nums, int k) {
+        // circular array
+        int l = nums.length;
+        int[] x = new int[l];
+        
+        for (int i = 0; i<l; i++) {
+            x[(i + k) % l] = nums[i];
+        }
+
+        System.out.println(Arrays.toString(x));
+       
+    }
     public static boolean isIsomorphic(String s, String t) {
         // store string in hashmap
         // check length
@@ -593,7 +605,7 @@ public class LeetcodePractice {
         int[] numbers = {2,7,11,15};
         // System.out.println(twoSum(numbers, 9));
 
-        int[] nums = {-1,0,1,2,-1,-4};
+        int[] nums = {1,2,3,4,5,6,7};
         // System.out.println(threeSum(nums));
         
         // minSubArrayLen(11, nums);
@@ -609,6 +621,7 @@ public class LeetcodePractice {
         // System.out.println(maxDepth(test));
         
         // romanToInt("LVIII");
-        System.out.println(isIsomorphic("badc", "baba"));
+        // System.out.println(isIsomorphic("badc", "baba"));
+        rotate(nums, 3);
     }
 }
