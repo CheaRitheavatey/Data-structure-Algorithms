@@ -30,6 +30,36 @@ import java.util.Stack;
 
  
 public class LeetcodePractice {
+    public static int candy(int[] ratings) {
+        int[] deftL = new int[ratings.length];
+        int[] deftR = new int[ratings.length];
+
+        int r = 0;
+
+        Arrays.fill(deftL, 1);
+        Arrays.fill(deftR, 1);
+
+       
+        for (int i =1 ; i< ratings.length; i++) {
+            if (ratings[i] > ratings[i-1]) {
+                deftL[i] = deftL[i-1] + 1;
+            }
+        }
+
+        for (int i = ratings.length-2; i >=0; i-- ) {
+            if (ratings[i] > ratings[i+1]) {
+                deftR[i] = deftR[i+1]+1;
+            }
+        }
+
+        for (int i =0; i<ratings.length; i++) {
+            r += Math.max(deftL[i], deftR[i]);
+
+        }
+        return r;
+
+        
+    }
     public static void rotate(int[] nums, int k) {
         // circular array
         int l = nums.length;
@@ -605,7 +635,7 @@ public class LeetcodePractice {
         int[] numbers = {2,7,11,15};
         // System.out.println(twoSum(numbers, 9));
 
-        int[] nums = {1,2,3,4,5,6,7};
+        int[] nums = {1,0,2};
         // System.out.println(threeSum(nums));
         
         // minSubArrayLen(11, nums);
@@ -622,6 +652,8 @@ public class LeetcodePractice {
         
         // romanToInt("LVIII");
         // System.out.println(isIsomorphic("badc", "baba"));
-        rotate(nums, 3);
+        // rotate(nums, 3);
+        System.out.println(candy(nums));
+
     }
 }
