@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
@@ -623,16 +624,65 @@ public class LeetcodePractice {
         return output;
     }
 
+    public static boolean wordPattern(String pattern, String s) {
+        if (pattern.length() != s.split(" ").length)
+            return false;
+        
+        String[] ssplit = s.split(" ");
+        Map<Character, String> map = new HashMap<>();
+        Map<String, Character> map1 = new HashMap<>();
+        for (int i = 0; i< pattern.length(); i++) {
+            
+            map.put(pattern.charAt(i), ssplit[i]);
+        }
+        System.out.println(map);
+        for (int i = 0; i< pattern.length(); i++) {
+            
+            map1.put(ssplit[i], pattern.charAt(i));
+        }
+        System.out.println(map1);
+
+        if (map.size()!= map1.size()) 
+            return false;
+        for (int i = 0; i < pattern.length(); i++) {
+            if (!map.get(pattern.charAt(i)).equals(ssplit[i])) {
+                return false;
+            }
+
+            if (!map1.get(ssplit[i]).equals(pattern.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static int[] twoSum1(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i =0; i< nums.length; i++) {
+            Integer x = map.get(nums[i]);
+            if (x != null) {
+                return new int[] {x, i};
+            }
+            map.put(target-nums[i], i);
+
+        }
+        return nums;
+        
+       
+        
+    }
+
     public static void main(String[] args) {
+        // System.out.println(wordPattern("abba", "dog cat cat dog"));
         String[] strs = {"flower","flow","flight"};
         // System.out.println(longestCommonPrefix(strs));
         int[] citations = {1,3,1};
         // System.out.println(hIndex(citations));
-
+        
         String s = "  hello world  ";
         // System.out.println(reverseWords(s));
-
+        
         int[] numbers = {2,7,11,15};
+        System.out.println(twoSum1(numbers, 9));
         // System.out.println(twoSum(numbers, 9));
 
         int[] nums = {1,0,2};
@@ -653,7 +703,7 @@ public class LeetcodePractice {
         // romanToInt("LVIII");
         // System.out.println(isIsomorphic("badc", "baba"));
         // rotate(nums, 3);
-        System.out.println(candy(nums));
+        // System.out.println(candy(nums));
 
     }
 }
