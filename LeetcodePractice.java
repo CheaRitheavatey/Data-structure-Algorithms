@@ -670,47 +670,61 @@ public class LeetcodePractice {
        
         
     }
-    public static void isAnagram(String s, String t) {
-        // if length not the same then false
-        if (s.length() != t.length())
-            System.out.println("false");
+    public static boolean isAnagram(String s, String t) {
         
-        Map<Character, Integer> map = new HashMap<>();
-        Map<Character, Integer> map1 = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
-            } else {
-                map.put(s.charAt(i), 1);
+            // if length not the same then false
+            if (s.length() != t.length())
+                return false;
+            
+            Map<Character, Integer> map = new HashMap<>();
+            Map<Character, Integer> map1 = new HashMap<>();
+            for (int i = 0; i < s.length(); i++) {
+                if (map.containsKey(s.charAt(i))) {
+                    map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+                } else {
+                    map.put(s.charAt(i), 1);
+                }
             }
-        }
-        for (int i = 0; i < t.length(); i++) {
-            if (map1.containsKey(t.charAt(i))) {
-                map1.put(t.charAt(i), map1.get(t.charAt(i)) + 1);
-            } else {
-                map1.put(t.charAt(i), 1);
+            for (int i = 0; i < t.length(); i++) {
+                if (map1.containsKey(t.charAt(i))) {
+                    map1.put(t.charAt(i), map1.get(t.charAt(i)) + 1);
+                } else {
+                    map1.put(t.charAt(i), 1);
+                }
             }
-        }
-
-        System.out.println("map"+map);
-        System.out.println("map1"+map1);
-
-
-        // if both map contain the same thing
-        if (map.equals(map1)) {
-            System.out.println("true they are the same");
-        } else {
-            System.out.println("false not right");
-        }
-
+    
+            // if both map contain the same thing
+            if (!map.equals(map1)) {
+                return false;
+            }
+            return true;
+    
+            
         
+    }
+    // faster approach
+    public static boolean isAnagram1(String s, String t) {
+            // if length not the same then false
+            if (s.length() != t.length())
+                return false;
+            
+            char[] sarray = s.toCharArray();
+            char[] tarray = t.toCharArray();
+
+            Arrays.sort(sarray);
+            Arrays.sort(tarray);
+
+            return Arrays.equals(sarray, tarray);
+    
+            
         
     }
 
     public static void main(String[] args) {
         String s = "anagram";
         String t = "nagaram";
-        isAnagram(s, t);
+        // isAnagram(s, t);
+        System.out.println(isAnagram1(s, t));
         // System.out.println(wordPattern("abba", "dog cat cat dog"));
         String[] strs = {"flower","flow","flight"};
         // System.out.println(longestCommonPrefix(strs));
