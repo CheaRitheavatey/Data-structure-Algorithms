@@ -670,19 +670,58 @@ public class LeetcodePractice {
        
         
     }
+    public static void isAnagram(String s, String t) {
+        // if length not the same then false
+        if (s.length() != t.length())
+            System.out.println("false");
+        
+        Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Integer> map1 = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+            } else {
+                map.put(s.charAt(i), 1);
+            }
+        }
+        for (int i = 0; i < t.length(); i++) {
+            if (map1.containsKey(t.charAt(i))) {
+                map1.put(t.charAt(i), map1.get(t.charAt(i)) + 1);
+            } else {
+                map1.put(t.charAt(i), 1);
+            }
+        }
+
+        System.out.println("map"+map);
+        System.out.println("map1"+map1);
+
+
+        // if both map contain the same thing
+        if (map.equals(map1)) {
+            System.out.println("true they are the same");
+        } else {
+            System.out.println("false not right");
+        }
+
+        
+        
+    }
 
     public static void main(String[] args) {
+        String s = "anagram";
+        String t = "nagaram";
+        isAnagram(s, t);
         // System.out.println(wordPattern("abba", "dog cat cat dog"));
         String[] strs = {"flower","flow","flight"};
         // System.out.println(longestCommonPrefix(strs));
         int[] citations = {1,3,1};
         // System.out.println(hIndex(citations));
         
-        String s = "  hello world  ";
+        // String s = "  hello world  ";
         // System.out.println(reverseWords(s));
         
         int[] numbers = {2,7,11,15};
-        System.out.println(twoSum1(numbers, 9));
+        // System.out.println(twoSum1(numbers, 9));
         // System.out.println(twoSum(numbers, 9));
 
         int[] nums = {1,0,2};
