@@ -736,7 +736,7 @@ public class LeetcodePractice {
                 map.put(sorted, new ArrayList<>());
             }
             map.get(sorted).add(word);
-            System.out.println(map);
+            // System.out.println(map);
             
         }
 
