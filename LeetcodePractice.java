@@ -715,18 +715,46 @@ public class LeetcodePractice {
             Arrays.sort(tarray);
 
             return Arrays.equals(sarray, tarray);
-    
-            
+
         
     }
 
+    public static List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<>();
+        if (strs.length == 0) return result;
+
+        // Map sorted string to list of actual words
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String word : strs) {
+            char[] sort = word.toCharArray();
+            Arrays.sort(sort);
+            String sorted = new String(sort);
+
+            // Add the word to the correct group
+            if (!map.containsKey(sorted)) {
+                map.put(sorted, new ArrayList<>());
+            }
+            map.get(sorted).add(word);
+            System.out.println(map);
+            
+        }
+
+        // Collect all groups
+        result.addAll(map.values());
+        return result;
+
+    }
+
     public static void main(String[] args) {
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"}; 
+        groupAnagrams(strs);
         String s = "anagram";
         String t = "nagaram";
         // isAnagram(s, t);
-        System.out.println(isAnagram1(s, t));
+        // System.out.println(isAnagram1(s, t));
         // System.out.println(wordPattern("abba", "dog cat cat dog"));
-        String[] strs = {"flower","flow","flight"};
+        // String[] strs = {"flower","flow","flight"};
         // System.out.println(longestCommonPrefix(strs));
         int[] citations = {1,3,1};
         // System.out.println(hIndex(citations));
