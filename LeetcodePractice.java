@@ -746,9 +746,40 @@ public class LeetcodePractice {
 
     }
 
+    public static int evalRPN(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+        for (String i: tokens) {
+            if (i.equals("+")) {
+                int a = stack.pop();
+                int b = stack.pop();
+                stack.push(a+b);
+            } else if (i.equals("-")) {
+                int a = stack.pop();
+                int b = stack.pop();
+                stack.push(b-a);
+            } else if (i.equals("*")) {
+                int a = stack.pop();
+                int b = stack.pop();
+                stack.push(a*b);
+            } else if (i.equals("/")) {
+                int a = stack.pop();
+                int b = stack.pop();
+                stack.push(b/a);
+            } else {
+                stack.push(Integer.parseInt(i));
+            }
+        }
+
+        return stack.pop();
+        
+    }
+
+
     public static void main(String[] args) {
+        String[] token = {"2","1","+","3","*"};
+        System.out.println(evalRPN(token));
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"}; 
-        groupAnagrams(strs);
+        // groupAnagrams(strs);
         String s = "anagram";
         String t = "nagaram";
         // isAnagram(s, t);
