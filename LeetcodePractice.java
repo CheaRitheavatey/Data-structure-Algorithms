@@ -775,9 +775,35 @@ public class LeetcodePractice {
     }
 
 
+    public static int sumNumbers(TreeNode root) {
+        if (root == null) return 0;
+
+        sumNumbers(root.left);
+        int x = root.val;
+
+        
+        
+        // int y = sumNumbers(root.right) + root.val;
+        System.out.println(x);
+        String left = "";
+        left += x;
+        System.out.println(left);
+        // System.out.println(y);
+        return 10;
+
+
+    }
+
+
     public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        
+        System.out.println(sumNumbers(root));
+
         String[] token = {"2","1","+","3","*"};
-        System.out.println(evalRPN(token));
+        // System.out.println(evalRPN(token));
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"}; 
         // groupAnagrams(strs);
         String s = "anagram";
