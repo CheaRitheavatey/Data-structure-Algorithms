@@ -745,6 +745,21 @@ public class LeetcodePractice {
         return result;
 
     }
+    public static int maxProfit(int[] prices) {
+        int profit = 0;
+        // need to buy first then sold
+        // if buy then sold num need to be bigger than buy num 
+        // store the result somewhere
+            for (int i = 1; i<prices.length; i++) {
+                if (prices[i-1] < prices[i]) {
+                    profit += prices[i] - prices[i-1];
+                }
+            }
+        
+        return profit;
+        
+        
+    }
 
     public static int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
@@ -786,16 +801,27 @@ public class LeetcodePractice {
         // int y = sumNumbers(root.right) + root.val;
         System.out.println(x);
         String left = "";
-        left += x;
-        System.out.println(left);
         // System.out.println(y);
         return 10;
 
 
     }
+    public static boolean canJump(int[] nums) {
+        int length = nums.length - 1;
+        int reach = 0;
+        for (int i = 0; i<= reach ; i++) {
+            reach = Math.max(i + nums[i], reach);
+            if (reach >= length)
+                return true;
+        }
+        return false;
+        
+    }
 
 
     public static void main(String[] args) {
+        int[] arr =  {3,2,1,0,4};
+        System.out.println(canJump(arr));
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
