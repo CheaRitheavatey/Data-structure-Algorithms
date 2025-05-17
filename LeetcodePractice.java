@@ -817,7 +817,33 @@ public class LeetcodePractice {
         return false;
         
     }
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        Map<Integer, Integer> map1 = new HashMap<>();
+        for (int i = 0; i < nums.length-2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            int leftpointer = i+1;
+            int rightpointer = nums.length -1;
+            while (leftpointer < rightpointer) {
+                int sum = nums[i] + nums[leftpointer] + nums[rightpointer];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[leftpointer], nums[rightpointer]));
+                    while (leftpointer < rightpointer && nums[leftpointer] == nums[leftpointer + 1]) leftpointer++; 
+                    while(leftpointer < rightpointer && nums[rightpointer] == nums[rightpointer - 1]) rightpointer--; // Skip duplicates
+                    leftpointer++;
+                    rightpointer--;
+                } else if (sum < 0) {
+                    leftpointer++;
+                } else {
+                    rightpointer--;
+                }
+            }
 
+        }
+
+        return result;
+    }
 
     public static void main(String[] args) {
         int[] arr =  {3,2,1,0,4};
