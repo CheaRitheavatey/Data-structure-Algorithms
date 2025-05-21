@@ -817,7 +817,7 @@ public class LeetcodePractice {
         return false;
         
     }
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public static List<List<Integer>> threeSum3(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
         Map<Integer, Integer> map1 = new HashMap<>();
@@ -845,6 +845,41 @@ public class LeetcodePractice {
         return result;
     }
 
+    public static boolean isHappy(int n) {
+        // front =  19 / 10 = 1^2
+        // end = 19 % 10 = 9 => 9^2
+        // front + end then repeat
+        // add the number to hashmap if it already appear return false
+        HashSet<Integer> map = new HashSet<>();
+        if (n == 1) return true;
+        while (n != 1) {
+            int temp = 0;
+            
+            while (n > 0) {
+            int end = n % 10;
+            System.out.println("end " + end);
+    
+            temp += end * end;
+            n/= 10;
+            System.out.println("tempt: " + temp);
+            }
+            
+            if (map.contains(temp)) {
+                return false;
+            }
+
+            map.add(temp);
+            System.out.println(map);
+            n = temp;
+
+            
+
+        }
+
+        return true;
+   
+        
+    }
     public static void main(String[] args) {
         int[] arr =  {3,2,1,0,4};
         System.out.println(canJump(arr));
@@ -894,6 +929,8 @@ public class LeetcodePractice {
         // System.out.println(isIsomorphic("badc", "baba"));
         // rotate(nums, 3);
         // System.out.println(candy(nums));
+
+        System.out.println(isHappy(19));
 
     }
 }
