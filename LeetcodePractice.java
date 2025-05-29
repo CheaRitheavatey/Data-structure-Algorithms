@@ -890,21 +890,19 @@ public class LeetcodePractice {
 
         // System.out.println(li.toString());
 
-        HashMap<Integer, List<Integer>> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i<nums.length; i++) {
             int n = nums[i];
 
-            if (!map.containsKey(n)) {
-                map.put(nums[i], new ArrayList<>());
+            if (map.containsKey(n)) {
+                int m = map.get(n);
+                if (Math.abs(i - m) <= k) {
+                    return true;
+                }
             }
-            map.get(n).add(i);
+            map.put(n, i);
+        
         }
-
-        
-
-        
-
-        System.out.println(map);
 
         return false;
         
