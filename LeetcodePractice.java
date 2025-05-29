@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 // Definition for singly-linked list.
@@ -880,14 +883,42 @@ public class LeetcodePractice {
    
         
     }
+    public static boolean containsNearbyDuplicate(int[] nums, int k) {
+        // sort the array
+        
+       
+
+        // System.out.println(li.toString());
+
+        HashMap<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i<nums.length; i++) {
+            int n = nums[i];
+
+            if (!map.containsKey(n)) {
+                map.put(nums[i], new ArrayList<>());
+            }
+            map.get(n).add(i);
+        }
+
+        
+
+        
+
+        System.out.println(map);
+
+        return false;
+        
+    }
     public static void main(String[] args) {
-        int[] arr =  {3,2,1,0,4};
+        int[] arr =  {3,2,1,0,4,1};
+        System.out.println(containsNearbyDuplicate(arr, 0));
+        
         System.out.println(canJump(arr));
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
         
-        System.out.println(sumNumbers(root));
+        // System.out.println(sumNumbers(root))
 
         String[] token = {"2","1","+","3","*"};
         // System.out.println(evalRPN(token));
@@ -930,7 +961,7 @@ public class LeetcodePractice {
         // rotate(nums, 3);
         // System.out.println(candy(nums));
 
-        System.out.println(isHappy(19));
+        // System.out.println(isHappy(19));
 
     }
 }
