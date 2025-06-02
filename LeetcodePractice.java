@@ -907,11 +907,33 @@ public class LeetcodePractice {
         return false;
         
     }
+    public static int longestConsecutive(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        Arrays.sort(nums);
+        int current = 1;
+        int highest = 1;
+        for (int i = 1; i < nums.length-1; i++) {
+            if (nums[i] != nums[i-1]) {
+                if (nums[i] == nums[i-1] + 1)
+                current++;
+                else {
+                    highest = Math.max(highest, current);
+                    current+=1;
+                }
+            }
+        }
+        
+        return Math.max(current, highest);
+        
+        
+    }
     public static void main(String[] args) {
         int[] arr =  {3,2,1,0,4,1};
-        System.out.println(containsNearbyDuplicate(arr, 0));
+        System.out.println(longestConsecutive(arr));
+        // System.out.println(containsNearbyDuplicate(arr, 0));
         
-        System.out.println(canJump(arr));
+        // System.out.println(canJump(arr));
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
